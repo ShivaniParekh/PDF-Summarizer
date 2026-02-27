@@ -32,16 +32,12 @@ def summarizer(pdf):
             text+=page.extract_text() or ""
 
         knowlegdeBase= process_text(text)
-
         query="Summarize the content of the uploaded PDF file in approximately 3-5 sentences."
 
         if query:
             docs=knowlegdeBase.similarity_search(query)
-
             openAImodel= "gpt-3.5-turbo-16k"
             llm=ChatOpenAI(model=openAImodel,temperature=0.8)
-
             chain= load_qa_chain(llm,chain_type='stuff')
             response=chain.run(input_documents=docs,question=query)
-
             return response
