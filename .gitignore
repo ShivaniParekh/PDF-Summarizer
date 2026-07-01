@@ -1,4 +1,8 @@
 config.json
-venv/
-.idea/
+.env
+model-selection.py
 __pycache__/
+.myenv
+myenv/
+
+
